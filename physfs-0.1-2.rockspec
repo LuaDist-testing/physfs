@@ -1,10 +1,10 @@
 -- This file was automatically generated for the LuaDist project.
 
 package = "physfs"
-version = "0.1-1"
+version = "0.1-2"
 -- LuaDist source
 source = {
-  tag = "0.1-1",
+  tag = "0.1-2",
   url = "git://github.com/LuaDist-testing/physfs.git"
 }
 -- Original source
@@ -20,17 +20,21 @@ build = {
    type = "builtin",
    platforms = {
       macosx = {
-         modules = {
-            physfs = {
-               libraries = { "c -framework CoreServices", "IOKit" }
-            }
-         }
+         type = "command",
+         build_command = "sh osxbuild.sh",
       }
    },
    modules = {
       physfs = {
          defines = {
-            "PHYSFS_SUPPORTS_7Z"
+            "PHYSFS_SUPPORTS_7Z",
+            "PHYSFS_SUPPORTS_QPAK",
+            "PHYSFS_SUPPORTS_GRP",
+            "PHYSFS_SUPPORTS_HOG",
+            "PHYSFS_SUPPORTS_MVL",
+            "PHYSFS_SUPPORTS_WAD",
+            "PHYSFS_SUPPORTS_SLB",
+            "PHYSFS_SUPPORTS_ISO9660",
          },
          sources = {
             "lua-physfs.c",
